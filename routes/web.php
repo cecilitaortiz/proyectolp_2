@@ -1,20 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DonacionController;
+use App\Http\Controllers\SurveyController;
 
-Route::get('/donaciones', [DonacionController::class, 'index']);  // Lectura
-Route::post('/donaciones', [DonacionController::class, 'store']); // Escritura
-
-
-
-// Mostrar la vista survey_test en la página principal
+// Página principal con el formulario
 Route::get('/', function () {
     return view('survey_test');
 });
 
-// Vista de resultados de huella de carbono
-Route::get('/resultados', function () {
-    return view('resultados');
-});
+// Procesar formulario y mostrar resultados
+Route::post('/resultados', [SurveyController::class, 'store'])->name('resultados');
 
